@@ -9,4 +9,10 @@ export const theme = {
     subWhite: "#F1F1F1",
     backWhite: "#FDFDFD",
   },
+  borders: {
+    gray: "rgba(241, 241, 241, 0.50)",
+    outline: "rgba(247, 248, 250, 0.30)",
+    icon: "rgba(247, 248, 250, 0.10)",
+    iconHover: "rgba(247, 248, 250, 0.5)",
+  },
 };
