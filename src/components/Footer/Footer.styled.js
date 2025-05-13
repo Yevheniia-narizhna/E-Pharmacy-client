@@ -24,6 +24,11 @@ export const ContFlex = styled.div`
   @media screen and (min-width: 768px) {
     flex-direction: row;
     justify-content: space-between;
+    padding-bottom: 88px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    padding-bottom: 64px;
   }
 `;
 
@@ -32,16 +37,25 @@ export const WrapLogoText = styled.div`
   flex-direction: column;
 `;
 
-export const WrapNavSoc = styled.div`
-  @media screen and (min-width: 768px) {
-    display: flex;
-    flex-direction: column;
-  }
+// export const WrapNavSoc = styled.div`
+//   padding-top: 40px;
 
-  @media screen and (min-width: 1440px) {
-    flex-direction: row;
-  }
-`;
+//   @media screen and (min-width: 768px) {
+//     display: flex;
+//     flex-direction: column;
+//     padding-top: 9px;
+//   }
+
+//   @media screen and (min-width: 1440px) {
+//     flex-direction: row;
+//     padding-top: 0;
+//     min-width: 758px;
+//     justify-content: space-between;
+//   }
+//   @media screen and (min-width: 1600px) {
+//     min-width: 900px;
+//   }
+// `;
 
 export const LogoText = styled(NavLink)`
   display: flex;
@@ -106,7 +120,9 @@ export const NavListFoot = styled.ul`
 
   @media screen and (min-width: 768px) {
     margin-bottom: 32px;
+    width: 100%;
     justify-content: flex-end;
+    margin-right: -154px;
 
     & a {
       font-size: 16px;
@@ -116,6 +132,9 @@ export const NavListFoot = styled.ul`
   @media only screen and (min-width: 1440px) {
     gap: 50px;
     margin-bottom: 0;
+    margin-right: 100px;
+    width: 332px;
+    justify-content: flex-start;
   }
 `;
 
@@ -126,6 +145,10 @@ export const Wrapper = styled.div`
 
   @media screen and (min-width: 768px) {
     display: flex;
+    padding-top: 52px;
+  }
+  @media only screen and (min-width: 1440px) {
+    padding-top: 0;
   }
 `;
 
@@ -174,5 +197,9 @@ export const ListBottom = styled.div`
   p:not(:last-child) {
     border-right: 1px solid ${({ theme }) => theme.borders.outline};
     padding-right: 10px;
+
+    @media screen and (min-width: 768px) {
+      padding-right: 24px;
+    }
   }
 `;

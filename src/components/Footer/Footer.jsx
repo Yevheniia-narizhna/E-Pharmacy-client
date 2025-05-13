@@ -8,7 +8,6 @@ import {
   NavListFoot,
   Text,
   WrapLogoText,
-  WrapNavSoc,
   Wrapper,
   WrapperBottom,
 } from "./Footer.styled";
@@ -33,54 +32,53 @@ const Footer = () => {
             life, and enjoy every moment.
           </Text>
         </WrapLogoText>
-        <WrapNavSoc>
-          <NavListFoot>
-            <li>
-              <NavLink to="/home">Home</NavLink>
-            </li>
-            <li>
-              <NavLink to="/medicine-store">Medicine store</NavLink>
-            </li>
-            <li>
-              <NavLink to="/medicine">Medicine</NavLink>
-            </li>
-          </NavListFoot>
-          <Wrapper>
-            <a
-              href="https://www.facebook.com/goITclub/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Icon>
-                <svg>
-                  <use href="../../../public/symbol-defs.svg#icon-facebook" />
-                </svg>
-              </Icon>
-            </a>
-            <a
-              href="https://www.instagram.com/goitclub/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Icon>
-                <svg>
-                  <use href="../../../public/symbol-defs.svg#icon-instagram" />
-                </svg>
-              </Icon>
-            </a>
-            <a
-              href="https://www.youtube.com/c/GoIT"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Icon>
-                <svg>
-                  <use href="../../../public/symbol-defs.svg#icon-youtube" />
-                </svg>
-              </Icon>
-            </a>
-          </Wrapper>
-        </WrapNavSoc>
+
+        <NavListFoot>
+          <li>
+            <NavLink to="/home">Home</NavLink>
+          </li>
+          <li>
+            <NavLink to="/medicine-store">Medicine store</NavLink>
+          </li>
+          <li>
+            <NavLink to="/medicine">Medicine</NavLink>
+          </li>
+        </NavListFoot>
+        <Wrapper>
+          <a
+            href="https://www.facebook.com/goITclub/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Icon>
+              <svg>
+                <use href="../../../public/symbol-defs.svg#icon-facebook" />
+              </svg>
+            </Icon>
+          </a>
+          <a
+            href="https://www.instagram.com/goitclub/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Icon>
+              <svg>
+                <use href="../../../public/symbol-defs.svg#icon-instagram" />
+              </svg>
+            </Icon>
+          </a>
+          <a
+            href="https://www.youtube.com/c/GoIT"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Icon>
+              <svg>
+                <use href="../../../public/symbol-defs.svg#icon-youtube" />
+              </svg>
+            </Icon>
+          </a>
+        </Wrapper>
       </ContFlex>
       <WrapperBottom>
         <ListBottom>
