@@ -10,6 +10,8 @@ export const theme = {
     backWhite: "#FDFDFD",
     round: "rgba(231, 241, 237, 0.4)",
     titleRound: " #252539",
+    storeBack: " #e7f1ed",
+    baforeAfter: "rgba(89, 177, 122, 0.08)",
   },
   borders: {
     gray: "rgba(241, 241, 241, 0.50)",

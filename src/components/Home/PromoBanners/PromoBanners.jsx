@@ -32,7 +32,16 @@ const PromoBanners = () => {
             </RoundTitle>
             <Box>
               <Percentage>100%</Percentage>
-              <Btn type="button">Read more</Btn>
+              <Btn
+                type="button"
+                onClick={() =>
+                  document
+                    .getElementById("features")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
+              >
+                Read more
+              </Btn>
             </Box>
           </Banner>
           <Banner>

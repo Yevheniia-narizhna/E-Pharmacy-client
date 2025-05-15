@@ -18,7 +18,7 @@ export const allStores = createAsyncThunk(
     }
   }
 );
-export const nearestStores = createAsyncThunk(
+export const getNearestStores = createAsyncThunk(
   "stores/nearest",
   async ({ limit = 6 }, { rejectWithValue }) => {
     try {

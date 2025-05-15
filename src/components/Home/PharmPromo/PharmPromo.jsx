@@ -50,7 +50,7 @@ const PharmPromo = () => {
             </picture>
           </ImgBox>
         </Wrapper>
-        <FeaturesList tabIndex="0">
+        <FeaturesList tabIndex="0" id="features">
           <Item>
             <svg>
               <use href="/symbol-defs.svg#icon-lightning-gr" />

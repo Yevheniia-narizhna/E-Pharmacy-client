@@ -146,6 +146,9 @@ export const FeaturesList = styled.ul`
     scroll-snap-align: start;
   }
 
+  @media screen and (min-width: 1130px) {
+    justify-content: center;
+  }
   @media screen and (min-width: 1440px) {
     gap: 60px;
   }

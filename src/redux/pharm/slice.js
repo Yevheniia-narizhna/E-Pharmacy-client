@@ -8,7 +8,7 @@ import {
   deleteFromCart,
   getCartItems,
   getProductById,
-  nearestStores,
+  getNearestStores,
   searchProducts,
   updateCart,
 } from "./operations";
@@ -50,7 +50,7 @@ export const slice = createSlice({
         state.isLoading = false;
         state.reviews = payload;
       })
-      .addCase(nearestStores.fulfilled, (state, { payload }) => {
+      .addCase(getNearestStores.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.nearestStores = payload;
       })
@@ -80,7 +80,7 @@ export const slice = createSlice({
         (action) =>
           [
             customerReviews,
-            nearestStores,
+            getNearestStores,
             allStores,
             searchProducts,
             getProductById,
@@ -95,7 +95,7 @@ export const slice = createSlice({
         (action) =>
           [
             customerReviews,
-            nearestStores,
+            getNearestStores,
             allStores,
             searchProducts,
             getProductById,
