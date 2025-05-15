@@ -110,6 +110,7 @@ export const NavListFoot = styled.ul`
   display: flex;
   gap: 32px;
   margin-bottom: 80px;
+  margin-top: 40px;
 
   & a {
     color: ${({ theme }) => theme.colors.lightGray};
@@ -119,6 +120,7 @@ export const NavListFoot = styled.ul`
   }
 
   @media screen and (min-width: 768px) {
+    margin-top: 0;
     margin-bottom: 32px;
     width: 100%;
     justify-content: flex-end;
