@@ -1,7 +1,7 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { registration } from "../../redux/auth/operations";
 import {
@@ -15,34 +15,34 @@ import {
   Title,
   TitleBox,
 } from "./Register.styled";
-import logoHome from "../../../public/img/logo-wh.png";
-import logoOther from "../../../public/img/logo-gr.png";
-import { LogoHeader } from "../Header/Header.styled";
 import pillMob from "../../../public/img/pill-mob-1x.png";
 import retinaMob from "../../../public/img/pill-mob-2x.png";
 import pillTab from "../../../public/img/pill-tab-des-1x.png";
 import retinaTab from "../../../public/img/pill-tab-des-2x.png";
+import { LogoHeader } from "../Header/Header.styled";
+import logoGr from "../../../public/img/logo-gr.png";
+
+const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 const schema = Yup.object().shape({
   name: Yup.string()
-    .min(3, "At least 3")
-    .max(20, "Max 20")
+    .min(3, "At least 3 characters")
+    .max(20, "Max 20 characters")
     .required("Required"),
   phone: Yup.string()
-    .matches(/^\+?\d{10,15}$/, "Incorrect format")
+    .matches(/^\+380\d{9}$/, "Invalid phone format")
     .required("Required"),
-  email: Yup.string().email("Incorrect format").required("Required"),
-  password: Yup.string().min(6, "At least 6").required("Required"),
+  email: Yup.string()
+    .matches(emailRegex, "Invalid email format")
+    .required("Email is required"),
+  password: Yup.string()
+    .min(6, "Password must be at least 6 characters")
+    .required("Password is required"),
 });
 
 const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const location = useLocation();
-  const isHome = location.pathname === "/home";
-  const logo = isHome ? logoHome : logoOther;
-  const textColor = isHome ? "#FFF" : "#1D1E21";
 
   const {
     register,
@@ -64,8 +64,8 @@ const Register = () => {
     <ContReg>
       <LogoWrapp>
         <LogoHeader to="/home">
-          <img src={logo} alt="logo" />
-          <p style={{ color: textColor }}>E-Pharmacy</p>
+          <img src={logoGr} alt="logo" />
+          <p>E-Pharmacy</p>
         </LogoHeader>
       </LogoWrapp>
       <MainWrapp>
