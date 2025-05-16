@@ -38,7 +38,7 @@ const handleError = (error, fallbackMessage) => {
   return error.message;
 };
 
-export const register = createAsyncThunk(
+export const registration = createAsyncThunk(
   "register",
   async (body, { rejectWithValue }) => {
     try {

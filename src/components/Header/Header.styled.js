@@ -94,14 +94,14 @@ export const NavList = styled.ul`
   }
 
   li:first-child {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
   }
   li:last-child {
-    margin-top: 12px;
+    margin-top: 14px;
   }
 
   & a {
-    padding: 8px 12px;
+    padding: 6px 12px;
     border-radius: 24px;
     display: inline-block;
     min-width: 80px;
@@ -122,17 +122,12 @@ export const NavList = styled.ul`
     align-items: center;
 
     li:first-child {
-      margin-right: 18px;
+      margin-right: 20px;
       margin-bottom: 0;
     }
     li:last-child {
-      margin-left: 28px;
+      margin-left: 26px;
       margin-top: 0;
-    }
-
-    & a {
-      display: inline-block;
-      min-width: 80px;
     }
 
     & a.active {

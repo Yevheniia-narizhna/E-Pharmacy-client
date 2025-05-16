@@ -1,8 +1,10 @@
+import Register from "../components/Register/Redister";
+
 const RegisterPage = () => {
   return (
-    <div>
-      <div>RegisterPage</div>
-    </div>
+    <>
+      <Register />
+    </>
   );
 };
 
