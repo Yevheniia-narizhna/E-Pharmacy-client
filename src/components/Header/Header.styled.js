@@ -50,3 +50,93 @@ export const LogoHeader = styled(NavLink)`
     }
   }
 `;
+export const Wrapp = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 302px;
+
+  @media screen and (min-width: 768px) {
+    padding-bottom: 422px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    padding-bottom: 0;
+
+    & svg {
+      width: 344px;
+      height: 46px;
+    }
+  }
+`;
+
+export const NavBox = styled.div`
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const NavList = styled.ul`
+  display: flex;
+  flex-direction: column;
+
+  & li {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    color: ${({ theme }) => theme.colors.gray};
+
+    &:hover {
+      color: ${({ theme }) => theme.colors.black};
+    }
+  }
+
+  li:first-child {
+    margin-bottom: 10px;
+  }
+  li:last-child {
+    margin-top: 12px;
+  }
+
+  & a {
+    padding: 8px 12px;
+    border-radius: 24px;
+    display: inline-block;
+    min-width: 80px;
+  }
+
+  & a.active {
+    background: ${({ theme }) => theme.colors.green};
+    color: ${({ theme }) => theme.colors.white};
+
+    &:hover {
+      background: #3f945f;
+    }
+  }
+
+  @media screen and (min-width: 1440px) {
+    flex-direction: row;
+    width: 328px;
+    align-items: center;
+
+    li:first-child {
+      margin-right: 18px;
+      margin-bottom: 0;
+    }
+    li:last-child {
+      margin-left: 28px;
+      margin-top: 0;
+    }
+
+    & a {
+      display: inline-block;
+      min-width: 80px;
+    }
+
+    & a.active {
+      background: ${({ theme }) => theme.colors.green};
+    }
+  }
+`;
