@@ -20,6 +20,7 @@ export const theme = {
     iconHover: "rgba(247, 248, 250, 0.5)",
     banner: "rgba(241, 241, 241, 1)",
     shadowBann: "rgba(29, 30, 33, 0.02)",
+    shadowRev: "rgba(16, 24, 40, 0.06)",
   },
   buttons: {},
 };

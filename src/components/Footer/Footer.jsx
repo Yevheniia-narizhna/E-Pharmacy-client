@@ -13,12 +13,8 @@ import {
 } from "./Footer.styled";
 import logoHome from "../../../public/img/logo-wh.png";
 import { NavLink } from "react-router-dom";
-// import logoOther from "../../../public/img/logo-gr.png";
 
 const Footer = () => {
-  //   const location = useLocation();
-  //   const isHome = location.pathname === "/home";
-  //   const logo = isHome ? logoHome : logoOther;
   return (
     <ContFooter>
       <ContFlex>

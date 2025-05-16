@@ -1,6 +1,7 @@
 import Banner from "./Banner/Banner";
 import PharmPromo from "./PharmPromo/PharmPromo";
 import PromoBanners from "./PromoBanners/PromoBanners";
+import Reviews from "./Reviews/Reviews";
 import Stores from "./Stores/Stores";
 
 const Home = () => {
@@ -10,6 +11,7 @@ const Home = () => {
       <PromoBanners />
       <Stores />
       <PharmPromo />
+      <Reviews />
     </>
   );
 };

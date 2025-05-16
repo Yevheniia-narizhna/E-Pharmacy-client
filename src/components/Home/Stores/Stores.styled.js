@@ -5,7 +5,7 @@ export const ContStores = styled(Container)`
   padding-bottom: 80px;
   background: ${({ theme }) => theme.colors.lightGray};
 
-  @media only screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     padding-bottom: 120px;
   }
 `;
@@ -16,9 +16,9 @@ export const Title = styled.h2`
   font-size: 28px;
   font-weight: 600;
   line-height: 1.14em;
-  margin-bottom: 14px;
+  padding-bottom: 14px;
 
-  @media only screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     font-size: 40px;
     line-height: 1.2em;
   }
@@ -30,16 +30,16 @@ export const Text = styled.p`
   font-size: 14px;
   font-weight: 400;
   line-height: 1.28em;
-  margin-bottom: 40px;
+  padding-bottom: 40px;
 
-  @media only screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: 1.25em;
-    margin-bottom: 64px;
+    padding-bottom: 64px;
   }
 `;
 export const Wrapper = styled.div`
-  @media only screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     display: flex;
     justify-content: center;
   }
@@ -50,14 +50,14 @@ export const List = styled.ul`
   flex-direction: column;
   gap: 20px;
 
-  @media only screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 32px 16px;
     width: 704px;
   }
 
-  @media only screen and (min-width: 1440px) {
+  @media screen and (min-width: 1440px) {
     width: 1248px;
     gap: 38px 36px;
   }
@@ -95,7 +95,7 @@ export const Store = styled.li`
     background: ${({ theme }) => theme.colors.baforeAfter};
   }
 
-  @media only screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     min-width: 344px;
     padding: 40px 40px 46px;
 
@@ -110,7 +110,7 @@ export const Store = styled.li`
     }
   }
 
-  @media only screen and (min-width: 1440px) {
+  @media screen and (min-width: 1440px) {
     min-width: 392px;
 
     &::before {
@@ -130,23 +130,29 @@ export const SubTitle = styled.h3`
   font-size: 16px;
   font-weight: 600;
   line-height: 1.4em;
-  margin-bottom: 32px;
+  padding-bottom: 32px;
   max-width: 123px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 
-  @media only screen and (min-width: 768px) {
+  @media screen and (min-width: 420px) {
+    max-width: 100%;
+  }
+  @media screen and (min-width: 768px) {
     font-size: 20px;
-    margin-bottom: 40px;
+    padding-bottom: 40px;
     max-width: 150px;
+  }
+  @media screen and (max-width: 350px) {
+    max-width: 70px;
   }
 `;
 
 export const AddressBox = styled.div`
   display: flex;
   gap: 8px;
-  margin-bottom: 18px;
+  padding-bottom: 18px;
 
   & svg {
     width: 18px;
@@ -163,8 +169,8 @@ export const AddressBox = styled.div`
     line-height: 1.28em;
   }
 
-  @media only screen and (min-width: 768px) {
-    margin-bottom: 14px;
+  @media screen and (min-width: 768px) {
+    padding-bottom: 14px;
 
     & ul {
       font-size: 16px;
@@ -202,7 +208,7 @@ export const PhoneBox = styled.div`
     line-height: 1.28em;
   }
 
-  @media only screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: 1.25em;
 
@@ -212,7 +218,7 @@ export const PhoneBox = styled.div`
     }
   }
 
-  @media only screen and (min-width: 1440px) {
+  @media screen and (min-width: 1440px) {
     &::after {
       right: -120px;
       bottom: 6px;
@@ -228,12 +234,12 @@ export const RatingBtn = styled.div`
   gap: 14px;
   align-items: center;
 
-  @media only screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     top: 40px;
     right: 24px;
   }
 
-  @media only screen and (min-width: 1440px) {
+  @media screen and (min-width: 1440px) {
     right: 40px;
   }
 `;

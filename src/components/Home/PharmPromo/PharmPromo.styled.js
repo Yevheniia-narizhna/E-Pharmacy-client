@@ -35,12 +35,12 @@ export const Title = styled.h2`
   font-weight: 600;
   line-height: 1.14em;
   letter-spacing: -0.28px;
-  margin-bottom: 20px;
+  padding-bottom: 20px;
 
   @media screen and (min-width: 768px) {
     font-size: 48px;
     letter-spacing: -0.48px;
-    margin-bottom: 24px;
+    padding-bottom: 24px;
   }
 
   @media screen and (min-width: 1440px) {
@@ -53,7 +53,7 @@ export const Text = styled.p`
   font-size: 14px;
   font-weight: 400;
   line-height: 1.28em;
-  margin-bottom: 40px;
+  padding-bottom: 40px;
 
   @media screen and (min-width: 768px) {
     width: 488px;
