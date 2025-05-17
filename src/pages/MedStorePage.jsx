@@ -1,8 +1,10 @@
+import MedStore from "../components/MedStore/MedStore";
+
 const MedStorePage = () => {
   return (
-    <div>
-      <div>MedStorePage</div>
-    </div>
+    <>
+      <MedStore />
+    </>
   );
 };
 
