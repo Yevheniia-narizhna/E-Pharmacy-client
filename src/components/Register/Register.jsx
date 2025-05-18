@@ -21,24 +21,7 @@ import pillTab from "../../../public/img/pill-tab-des-1x.png";
 import retinaTab from "../../../public/img/pill-tab-des-2x.png";
 import { LogoHeader } from "../Header/Header.styled";
 import logoGr from "../../../public/img/logo-gr.png";
-
-const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-const schema = Yup.object().shape({
-  name: Yup.string()
-    .min(3, "At least 3 characters")
-    .max(20, "Max 20 characters")
-    .required("Required"),
-  phone: Yup.string()
-    .matches(/^\+380\d{9}$/, "Invalid phone format")
-    .required("Required"),
-  email: Yup.string()
-    .matches(emailRegex, "Invalid email format")
-    .required("Email is required"),
-  password: Yup.string()
-    .min(6, "Password must be at least 6 characters")
-    .required("Password is required"),
-});
+import { registerSchema } from "../../utils/schemas";
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -49,7 +32,7 @@ const Register = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(registerSchema),
   });
 
   const onSubmit = (values) => {

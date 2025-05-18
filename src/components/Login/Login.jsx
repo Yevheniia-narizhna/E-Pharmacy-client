@@ -19,17 +19,7 @@ import {
   TitleBox,
 } from "../Register/Register.styled";
 import { BtnBoxLog, InputBox, MainWrapp } from "./Login.styled";
-
-const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-export const schema = Yup.object().shape({
-  email: Yup.string()
-    .matches(emailRegex, "Invalid email format")
-    .required("Email is required"),
-  password: Yup.string()
-    .min(6, "Password must be at least 6 characters")
-    .required("Password is required"),
-});
+import { loginSchema } from "../../utils/schemas";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -40,7 +30,7 @@ const Login = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(loginSchema),
   });
 
   const onSubmit = (data) => {

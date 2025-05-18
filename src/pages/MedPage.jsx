@@ -1,8 +1,10 @@
+import Medicine from "../components/Medicine/Medicine";
+
 const MedPage = () => {
   return (
-    <div>
-      <div>MedPage</div>
-    </div>
+    <>
+      <Medicine />
+    </>
   );
 };
 
