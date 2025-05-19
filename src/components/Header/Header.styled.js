@@ -135,3 +135,20 @@ export const NavList = styled.ul`
     }
   }
 `;
+export const BurgerBtn = styled.button`
+  background: transparent;
+  border: none;
+
+  & svg {
+    width: 32px;
+    height: 26px;
+  }
+`;
+
+export const WhiteSvg = styled.div`
+  stroke: #fff;
+`;
+
+export const GreenSvg = styled.svg`
+  stroke: #59b17a;
+`;
