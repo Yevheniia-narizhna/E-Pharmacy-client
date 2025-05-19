@@ -2,7 +2,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
-import * as Yup from "yup";
 import { registration } from "../../redux/auth/operations";
 import {
   BtnBox,

@@ -12,6 +12,11 @@ export const theme = {
     titleRound: " #252539",
     storeBack: " #e7f1ed",
     baforeAfter: "rgba(89, 177, 122, 0.08)",
+    textSignIn: "#6a6a6f",
+    btnSignIn: "rgba(29, 30, 33, 0.4)",
+    btnSub: "#3f945f",
+    spanColor: "#e85050",
+    overlay: "rgba(18, 20, 23, 0.2)",
   },
   borders: {
     gray: "rgba(241, 241, 241, 0.50)",
