@@ -26,6 +26,6 @@ export const theme = {
     banner: "rgba(241, 241, 241, 1)",
     shadowBann: "rgba(29, 30, 33, 0.02)",
     shadowRev: "rgba(16, 24, 40, 0.06)",
+    checkBox: "rgba(89, 177, 122, 1)",
   },
-  buttons: {},
 };

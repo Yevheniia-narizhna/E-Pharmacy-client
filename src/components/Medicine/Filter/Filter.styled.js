@@ -1,4 +1,3 @@
-import Select from "react-select/base";
 import styled from "styled-components";
 
 export const Form = styled.form`
@@ -17,7 +16,7 @@ export const Form = styled.form`
   }
 `;
 
-export const CustomSelect = styled(Select)`
+export const CustomSelectWrapper = styled.div`
   width: 100%;
 
   @media only screen and (min-width: 768px) {

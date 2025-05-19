@@ -23,6 +23,9 @@ import {
 } from "./Medicine.styled";
 import Filter from "./Filter/Filter";
 import Pagination from "./Pagination/Pagination";
+import Modal from "../Modal/Modal";
+import SignIn from "../Modal/SignIn/Signin";
+import SignUp from "../Modal/SignUp/SignUp";
 
 const Medicine = () => {
   const dispatch = useDispatch();
@@ -99,7 +102,7 @@ const Medicine = () => {
 
         {totalPages > 1 && <Pagination totalPages={totalPages} />}
       </ContMed>
-{/* 
+
       <Modal isOpen={modal === "signin"} onClose={handleCloseModal}>
         <SignIn
           onClose={handleCloseModal}
@@ -112,7 +115,7 @@ const Medicine = () => {
           onClose={handleCloseModal}
           onToggleModal={() => handleOpenModal("signin")}
         />
-      </Modal> */}
+      </Modal>
     </>
   );
 };

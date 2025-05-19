@@ -7,11 +7,11 @@ export const registerSchema = Yup.object().shape({
   name: Yup.string()
     .min(2, "Too short!")
     .max(50, "Too long!")
-    .required("Required"),
-  email: Yup.string().email("Invalid email").required("Required"),
+    .required("Name is required"),
+  email: Yup.string().email("Invalid email").required("Email is required"),
   phone: Yup.string()
     .matches(phoneRegex, "Invalid phone number")
-    .required("Required"),
+    .required("RPhone is required"),
   password: Yup.string()
     .min(6, "Min length 6")
     .max(20, "Max length 20")
@@ -19,9 +19,27 @@ export const registerSchema = Yup.object().shape({
 });
 
 export const loginSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid email").required("Required"),
+  email: Yup.string().email("Invalid email").required("Email is required"),
   password: Yup.string()
     .min(6, "Min length 6")
     .max(20, "Max length 20")
-    .required("Required"),
+    .required("Password is required"),
+});
+
+export const cartSchema = Yup.object().shape({
+  name: Yup.string()
+    .min(2, "Too short!")
+    .max(50, "Too long!")
+    .required("Name is required"),
+  email: Yup.string().email("Invalid email").required("Email is required"),
+  phone: Yup.string()
+    .matches(phoneRegex, "Invalid phone number")
+    .required("Phone is required"),
+  address: Yup.string()
+    .min(2, "Too short!")
+    .max(50, "Too long!")
+    .required("Address is required"),
+  payment: Yup.string()
+    .oneOf(["cash", "bank"])
+    .required("Payment method is required"),
 });

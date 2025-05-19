@@ -2,37 +2,55 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useWindowSize } from "../../../utils/utils";
 import { searchProducts } from "../../../redux/pharm/operations";
-import { CustomSelect, Form, Label, SubmitBtn } from "./Filter.styled";
+import { CustomSelectWrapper, Form, Label, SubmitBtn } from "./Filter.styled";
 import { FiSearch } from "react-icons/fi";
 import { LuFilter } from "react-icons/lu";
+import Select from "react-select";
 
 const customStyles = {
-  control: (baseStyles) => ({
-    ...baseStyles,
+  control: (base, state) => ({
+    ...base,
     borderRadius: "60px",
-    border: "1px solid rgba(29, 30, 33, 0.10)",
+    border: "none",
     height: "46px",
+    outline: "none",
     background: "#fff",
+    boxShadow: state.isFocused ? "0 0 5px #3f945f" : "none",
     fontSize: "12px",
   }),
-  valueContainer: (baseStyles) => ({
-    ...baseStyles,
+  menu: (base) => ({
+    ...base,
+    borderRadius: "20px",
+    overflow: "hidden",
+  }),
+  option: (base, state) => ({
+    ...base,
+    backgroundColor: state.isSelected
+      ? "#3f945f"
+      : state.isFocused
+      ? "rgba(63, 148, 95, 0.1)"
+      : null,
+    color: state.isSelected ? "#fff" : "#1d1e21",
+    cursor: "pointer",
+  }),
+  valueContainer: (base) => ({
+    ...base,
     paddingLeft: "18px",
   }),
-  placeholder: (baseStyles) => ({
-    ...baseStyles,
+  placeholder: (base) => ({
+    ...base,
     color: "rgba(29, 30, 33, 0.40)",
   }),
-  singleValue: (baseStyles) => ({
-    ...baseStyles,
+  singleValue: (base) => ({
+    ...base,
     textTransform: "capitalize",
     color: "rgba(29, 30, 33, 0.40)",
   }),
   indicatorSeparator: () => ({
     display: "none",
   }),
-  indicatorsContainer: (baseStyles) => ({
-    ...baseStyles,
+  indicatorsContainer: (base) => ({
+    ...base,
     paddingRight: "8px",
   }),
 };
@@ -107,13 +125,18 @@ const Filter = ({ totalPages }) => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <CustomSelect
-        options={options}
-        placeholder="Product category"
-        styles={customStyles}
-        onChange={handleCategoryChange}
-        value={selectedCategory}
-      />
+      <CustomSelectWrapper>
+        <Select
+          options={options}
+          placeholder="Product category"
+          styles={customStyles}
+          onChange={handleCategoryChange}
+          value={selectedCategory}
+          onMenuOpen={() => {}}
+          onMenuClose={() => {}}
+          onInputChange={() => {}}
+        />
+      </CustomSelectWrapper>
       <Label htmlFor="name">
         <input
           type="text"

@@ -94,6 +94,7 @@ export const addToCart = createAsyncThunk(
   async (body, { rejectWithValue, getState }) => {
     try {
       withAuthToken(getState);
+      console.log("addToCart body:", body);
       const response = await pharmApi.patch("/cart/add", body);
       toast.success("Product added to cart.");
       return response.data;
