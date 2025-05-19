@@ -3,12 +3,12 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { login } from "../../redux/auth/operations";
-import logoGr from "../../../public/img/logo-gr.png";
+import logoGr from "/img/logo-gr.png";
 import { LogoHeader } from "../Header/Header.styled";
-import pillMob from "../../../public/img/pill-mob-1x.png";
-import retinaMob from "../../../public/img/pill-mob-2x.png";
-import pillTab from "../../../public/img/pill-tab-des-1x.png";
-import retinaTab from "../../../public/img/pill-tab-des-2x.png";
+import pillMob from "/img/pill-mob-1x.png";
+import retinaMob from "/img/pill-mob-2x.png";
+import pillTab from "/img/pill-tab-des-1x.png";
+import retinaTab from "/img/pill-tab-des-2x.png";
 import {
   ContReg,
   ImgWrapp,

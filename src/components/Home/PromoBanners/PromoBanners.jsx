@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import {
   Banner,
   Box,
@@ -11,6 +12,7 @@ import {
 } from "./PromoBanners.styled";
 
 const PromoBanners = () => {
+  const navigate = useNavigate();
   return (
     <>
       <ContPromo>
@@ -22,7 +24,9 @@ const PromoBanners = () => {
             </RoundTitle>
             <Box>
               <Percentage>70%</Percentage>
-              <Btn type="button">Shop now</Btn>
+              <Btn type="button" onClick={() => navigate("/medicine")}>
+                Shop now
+              </Btn>
             </Box>
           </Banner>
           <Banner>
@@ -51,7 +55,9 @@ const PromoBanners = () => {
             </RoundTitle>
             <Box>
               <Percentage>35%</Percentage>
-              <Btn type="button">Shop now</Btn>
+              <Btn type="button" onClick={() => navigate("/medicine")}>
+                Shop now
+              </Btn>
             </Box>
           </Banner>
         </List>

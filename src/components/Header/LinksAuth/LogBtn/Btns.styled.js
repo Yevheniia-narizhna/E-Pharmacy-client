@@ -10,9 +10,9 @@ export const Btn = styled.button`
   padding: ${({ padding }) => padding || "13px 28px"};
   color: ${({ color }) => color || "#f1f1f1"};
   border: ${({ border }) => border || "none"};
-  text-decoration: ${({ underline }) => (underline ? "underline" : "none")};
+  text-decoration: ${({ $underline }) => ($underline ? "underline" : "none")};
 
-  @media only screen and (min-width: 768px) {
-    padding: ${({ paddingMd }) => paddingMd || "15px 32px"};
+  @media screen and (min-width: 768px) {
+    padding: ${({ $paddingMd }) => $paddingMd || "15px 32px"};
   }
 `;

@@ -33,7 +33,7 @@ const CartUser = () => {
     <Wrapp>
       <CartBtn onClick={handleCartClick}>
         <svg>
-          <use href="../../../../public/symbol-defs.svg#icon-shopping-cart" />
+          <use href="/symbol-defs.svg#icon-shopping-cart" />
         </svg>
         <CartItems>{cartItemsQuantity}</CartItems>
       </CartBtn>

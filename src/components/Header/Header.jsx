@@ -1,5 +1,5 @@
-import logoHome from "../../../public/img/logo-wh.png";
-import logoOther from "../../../public/img/logo-gr.png";
+import logoHome from "/img/logo-wh.png";
+import logoOther from "/img/logo-gr.png";
 import { NavLink, useLocation } from "react-router-dom";
 import {
   BurgerBtn,
@@ -10,6 +10,7 @@ import {
   NavList,
   WhiteSvg,
   Wrapp,
+  WrappLeftBtn,
 } from "./Header.styled";
 
 import LinksAuth from "./LinksAuth/LinksAuth";
@@ -70,22 +71,24 @@ const Header = () => {
             </Wrapp>
           </>
         )}
-        {!isHome && <CartUser />}
-        {isDesktop ? (
-          <LinksAuth />
-        ) : (
-          <BurgerBtn type="button" onClick={handleOpenMenu}>
-            {isHome ? (
-              <WhiteSvg>
-                <img src="/img/align-justify.png" alt="burger menu" />
-              </WhiteSvg>
-            ) : (
-              <GreenSvg>
-                <use href="/symbol-defs.svg#icon-burger" />
-              </GreenSvg>
-            )}
-          </BurgerBtn>
-        )}
+        <WrappLeftBtn>
+          {!isHome && <CartUser />}
+          {isDesktop ? (
+            <LinksAuth />
+          ) : (
+            <BurgerBtn type="button" onClick={handleOpenMenu}>
+              {isHome ? (
+                <WhiteSvg>
+                  <img src="/img/align-justify.png" alt="burger menu" />
+                </WhiteSvg>
+              ) : (
+                <GreenSvg>
+                  <use href="/symbol-defs.svg#icon-burger" />
+                </GreenSvg>
+              )}
+            </BurgerBtn>
+          )}
+        </WrappLeftBtn>
       </ContHeader>
       <BurgerMenu isOpen={isMenuOpen} onClose={handleCloseMenu} />
     </>

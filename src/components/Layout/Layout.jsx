@@ -8,12 +8,10 @@ import { clearToken, getUserInfo, setToken } from "../../redux/auth/operations";
 const Layout = () => {
   const location = useLocation();
   const pageType = location.pathname.split("/")[1] || "";
-
   const dispatch = useDispatch();
 
   useEffect(() => {
     const token = localStorage.getItem("accessToken");
-    console.log("accessToken from localStorage:", token);
     if (token) {
       setToken(token);
       dispatch(getUserInfo())
@@ -21,7 +19,6 @@ const Layout = () => {
         .catch(() => {
           clearToken();
           localStorage.removeItem("accessToken");
-          localStorage.removeItem("refreshToken");
         });
     }
   }, [dispatch]);

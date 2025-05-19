@@ -15,7 +15,7 @@ export const LogBtn = () => {
     : "#59B17A";
 
   return (
-    <Btn color={btnColor} underline padding="0" paddingMd="0">
+    <Btn color={btnColor} $underline padding="0" $paddingMd="0">
       <NavLink to="/login" style={{ color: "inherit", textDecoration: "none" }}>
         Login
       </NavLink>

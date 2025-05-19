@@ -25,7 +25,7 @@ export const RegBtn = () => {
       color={btnColor}
       border={btnBorder}
       padding="13px 32px"
-      paddingMd="16px 32px"
+      $paddingMd="16px 32px"
     >
       <NavLink
         to="/register"

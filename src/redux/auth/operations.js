@@ -11,6 +11,10 @@ export const pharmApi = axios.create({
 
 export const setToken = (token) => {
   pharmApi.defaults.headers.common.Authorization = `Bearer ${token}`;
+  console.log(
+    "Authorization header set:",
+    pharmApi.defaults.headers.common.Authorization
+  );
 };
 
 export const clearToken = () => {
@@ -20,7 +24,6 @@ export const clearToken = () => {
 const saveTokens = (token) => {
   setToken(token);
   localStorage.setItem("accessToken", token);
-  // refreshToken немає — не зберігаємо
 };
 
 const errorMessages = {
@@ -72,10 +75,12 @@ export const logout = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       await pharmApi.get("/user/logout");
-      clearToken();
-      localStorage.removeItem("accessToken");
     } catch (error) {
       return rejectWithValue(handleError(error));
+    } finally {
+      clearToken();
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("refreshToken");
     }
   }
 );

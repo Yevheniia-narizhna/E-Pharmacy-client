@@ -65,16 +65,21 @@ export const slice = createSlice({
         state.error = payload;
       })
       .addCase(getUserInfo.pending, (state) => {
+        state.isRefresh = true;
         state.isLoading = true;
         state.error = null;
       })
       .addCase(getUserInfo.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.user = payload.user;
+        state.isLoggedIn = true;
+        state.isRefresh = false;
       })
       .addCase(getUserInfo.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
+        state.isLoggedIn = false;
+        state.isRefresh = false;
       });
   },
 });

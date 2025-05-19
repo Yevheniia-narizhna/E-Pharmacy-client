@@ -152,3 +152,8 @@ export const WhiteSvg = styled.div`
 export const GreenSvg = styled.svg`
   stroke: #59b17a;
 `;
+export const WrappLeftBtn = styled.div`
+  display: flex;
+  justify-content: right;
+  gap: 12px;
+`;

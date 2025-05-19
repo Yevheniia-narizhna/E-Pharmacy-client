@@ -8,9 +8,9 @@ export const LogoutBtn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const windowWidth = useWindowSize();
-    const isDesktop = windowWidth >= 1440;
-    const location = useLocation();
-    const pageType = location.pathname.split("/")[1];
+  const isDesktop = windowWidth >= 1440;
+  const location = useLocation();
+  const pageType = location.pathname.split("/")[1];
 
   const handleLogoutClick = () => {
     dispatch(logout());
@@ -36,7 +36,7 @@ export const LogoutBtn = () => {
       color={btnColor}
       border={btnBorder}
       padding="13px 28px"
-      paddingMd="15px 32px"
+      $paddingMd="15px 32px"
       onClick={handleLogoutClick}
       style={{ cursor: "pointer" }}
     >

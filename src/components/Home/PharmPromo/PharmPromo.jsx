@@ -1,9 +1,9 @@
-import onlineMob from "../../../../public/img/online-mob-1x.png";
-import onlineTabl from "../../../../public/img/online-tab-1x.png";
-import onlineDes from "../../../../public/img/online-desk-1x.png";
-import retinaMob from "../../../../public/img/online-mob-2x.png";
-import retinaTab from "../../../../public/img/online-tab-2x.png";
-import retinaDes from "../../../../public/img/online-desk-2x.png";
+import onlineMob from "/img/online-mob-1x.png";
+import onlineTabl from "/img/online-tab-1x.png";
+import onlineDes from "/img/online-desk-1x.png";
+import retinaMob from "/img/online-mob-2x.png";
+import retinaTab from "/img/online-tab-2x.png";
+import retinaDes from "/img/online-desk-2x.png";
 import {
   Btn,
   ContPharmPromo,

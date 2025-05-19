@@ -83,7 +83,7 @@ const Cart = () => {
                         onClick={() => handleIncrease(productId._id)}
                       >
                         <svg>
-                          <use href="../../../public/symbol-defs.svg#icon-plus" />
+                          <use href="/symbol-defs.svg#icon-plus" />
                         </svg>
                       </button>
                       <p>{quantity}</p>
@@ -92,7 +92,7 @@ const Cart = () => {
                         onClick={() => handleDecrease(productId._id)}
                       >
                         <svg>
-                          <use href="../../../public/symbol-defs.svg#icon-min-gr" />
+                          <use href="/symbol-defs.svg#icon-min-gr" />
                         </svg>
                       </button>
                     </AmountBox>

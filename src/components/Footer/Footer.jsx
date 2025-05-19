@@ -11,7 +11,7 @@ import {
   Wrapper,
   WrapperBottom,
 } from "./Footer.styled";
-import logoHome from "../../../public/img/logo-wh.png";
+import logoHome from "/img/logo-wh.png";
 import { NavLink } from "react-router-dom";
 
 const Footer = () => {
@@ -48,7 +48,7 @@ const Footer = () => {
           >
             <Icon>
               <svg>
-                <use href="../../../public/symbol-defs.svg#icon-facebook" />
+                <use href="/symbol-defs.svg#icon-facebook" />
               </svg>
             </Icon>
           </a>
@@ -59,7 +59,7 @@ const Footer = () => {
           >
             <Icon>
               <svg>
-                <use href="../../../public/symbol-defs.svg#icon-instagram" />
+                <use href="/symbol-defs.svg#icon-instagram" />
               </svg>
             </Icon>
           </a>
@@ -70,7 +70,7 @@ const Footer = () => {
           >
             <Icon>
               <svg>
-                <use href="../../../public/symbol-defs.svg#icon-youtube" />
+                <use href="/symbol-defs.svg#icon-youtube" />
               </svg>
             </Icon>
           </a>
