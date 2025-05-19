@@ -71,7 +71,7 @@ export const logout = createAsyncThunk(
   "logout",
   async (_, { rejectWithValue }) => {
     try {
-      await pharmApi.post("/user/logout");
+      await pharmApi.get("/user/logout");
       clearToken();
       localStorage.removeItem("refreshToken");
       localStorage.removeItem("accessToken");

@@ -9,6 +9,7 @@ import {
   Wrapp,
 } from "./Header.styled";
 import { useMediaQuery } from "react-responsive";
+import LinksAuth from "./LinksAuth/LinksAuth";
 
 const Header = () => {
   const location = useLocation();
@@ -44,6 +45,7 @@ const Header = () => {
           </NavList>
         </NavBox>
       </Wrapp>
+      <LinksAuth />
     </ContHeader>
   );
 };
