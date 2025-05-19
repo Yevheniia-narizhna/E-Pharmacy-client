@@ -14,13 +14,13 @@ export const setToken = (token) => {
 };
 
 export const clearToken = () => {
-  pharmApi.defaults.headers.common.Authorization = "";
+  delete pharmApi.defaults.headers.common.Authorization;
 };
 
 const saveTokens = (token) => {
   setToken(token);
-  localStorage.setItem("refreshToken", token);
   localStorage.setItem("accessToken", token);
+  // refreshToken немає — не зберігаємо
 };
 
 const errorMessages = {
@@ -73,7 +73,6 @@ export const logout = createAsyncThunk(
     try {
       await pharmApi.get("/user/logout");
       clearToken();
-      localStorage.removeItem("refreshToken");
       localStorage.removeItem("accessToken");
     } catch (error) {
       return rejectWithValue(handleError(error));
@@ -88,6 +87,10 @@ export const getUserInfo = createAsyncThunk(
       const { data } = await pharmApi.get("/user/user-info");
       return data;
     } catch (error) {
+      if (error.response?.status === 401) {
+        clearToken();
+        localStorage.removeItem("accessToken");
+      }
       return rejectWithValue(error.message);
     }
   }

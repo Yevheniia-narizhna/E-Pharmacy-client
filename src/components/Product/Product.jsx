@@ -18,6 +18,7 @@ import {
   Text,
   Wrapp,
 } from "./Product.styled";
+import Tabs from "./Tabs/Tabs";
 
 const Product = () => {
   const dispatch = useDispatch();
@@ -75,7 +76,7 @@ const Product = () => {
                   onClick={() => handleAmountChange("increase")}
                 >
                   <svg>
-                    <use href="../../../public/symbol-defs.svg#icon-plus" />
+                    <use href="/symbol-defs.svg#icon-plus" />
                   </svg>
                 </button>
                 <p>{amount}</p>
@@ -84,19 +85,22 @@ const Product = () => {
                   onClick={() => handleAmountChange("decrease")}
                 >
                   <svg>
-                    <use href="../../../public/symbol-defs.svg#icon-min-gr" />
+                    <use href="/symbol-defs.svg#icon-min-gr" />
                   </svg>
                 </button>
               </AmountBox>
 
-              <AddToCartBtn type="button" onClick={handleAddToCart}>
+              <AddToCartBtn
+                type="button"
+                onClick={() => handleAddToCart(product._id)}
+              >
                 Add to cart
               </AddToCartBtn>
             </BtnBox>
           </InfoBox>
         </Wrapp>
 
-        {/* <TabsContainer /> */}
+        <Tabs />
       </ContProd>
 
       <Modal isOpen={openSignIn} onClose={() => setOpenSignIn(false)}>
