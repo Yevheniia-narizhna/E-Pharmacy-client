@@ -1,6 +1,15 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { pharmApi, setToken } from "../auth/operations";
 import { toast } from "react-toastify";
+import axios from "axios";
+
+export const pharmApiPh = axios.create({
+  baseURL: "https://e-pharmacy-shop-back.onrender.com/api",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  withCredentials: false,
+});
 
 const withAuthToken = (getState) => {
   const token = getState().auth.token;
@@ -11,7 +20,7 @@ export const allStores = createAsyncThunk(
   "stores/all",
   async ({ limit = "" }, { rejectWithValue }) => {
     try {
-      const response = await pharmApi.get(`/stores?limit=${limit}`);
+      const response = await pharmApiPh.get(`/stores?limit=${limit}`);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -22,7 +31,7 @@ export const getNearestStores = createAsyncThunk(
   "stores/nearest",
   async ({ limit = 6 }, { rejectWithValue }) => {
     try {
-      const response = await pharmApi.get(`/stores/nearest?limit=${limit}`);
+      const response = await pharmApiPh.get(`/stores/nearest?limit=${limit}`);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -34,7 +43,7 @@ export const searchProducts = createAsyncThunk(
   async (body, { rejectWithValue }) => {
     try {
       const params = new URLSearchParams(body).toString();
-      const response = await pharmApi.get(`/products?${params}`);
+      const response = await pharmApiPh.get(`/products?${params}`);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -58,7 +67,7 @@ export const customerReviews = createAsyncThunk(
   "reviews/fetch",
   async ({ limit = 3 }, { rejectWithValue }) => {
     try {
-      const response = await pharmApi.get(`/customer-reviews?limit=${limit}`);
+      const response = await pharmApiPh.get(`/customer-reviews?limit=${limit}`);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -94,7 +103,7 @@ export const addToCart = createAsyncThunk(
   async (body, { rejectWithValue, getState }) => {
     try {
       withAuthToken(getState);
-      console.log("addToCart body:", body);
+      // console.log("addToCart body:", body);
       const response = await pharmApi.patch("/cart/add", body);
       toast.success("Product added to cart.");
       return response.data;

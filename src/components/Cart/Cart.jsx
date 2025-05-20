@@ -1,12 +1,9 @@
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import {
-  addToCart,
-  decreaseQuantity,
   deleteFromCart,
   getCartItems,
-  getProductById,
+  updateCart,
 } from "../../redux/pharm/operations";
 import CartForm from "./FormCart/FormCart";
 import {
@@ -28,29 +25,32 @@ import {
 
 const Cart = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const cart = useSelector((state) => state.pharm.cart);
 
-  useEffect(() => {
+  const handleAmountChange = async (productId, type, currentQuantity) => {
+    const newAmount =
+      type === "increase"
+        ? currentQuantity + 1
+        : Math.max(currentQuantity - 1, 0);
+
+    if (newAmount === 0) {
+      await dispatch(deleteFromCart({ productId }));
+    } else {
+      const updatedProducts = cart.cartProducts.map((item) =>
+        item.productId._id === productId
+          ? { productId, quantity: newAmount }
+          : { productId: item.productId._id, quantity: item.quantity }
+      );
+
+      await dispatch(updateCart({ products: updatedProducts }));
+    }
+
     dispatch(getCartItems());
-  }, [dispatch]);
-
-  const handleIncrease = (id) => {
-    dispatch(addToCart({ productId: id, quantity: 1 }));
-  };
-
-  const handleDecrease = (id) => {
-    dispatch(decreaseQuantity({ productId: id, quantity: 1 }));
   };
 
   const handleDelete = (id) => {
     dispatch(deleteFromCart(id));
-  };
-
-  const handleNavigate = (id) => {
-    dispatch(getProductById(id)).then(() => {
-      navigate("/product");
-    });
+    dispatch(getCartItems());
   };
 
   return (
@@ -61,10 +61,7 @@ const Cart = () => {
         <div>
           <List>
             {cart?.cartProducts?.map(({ productId, quantity }) => (
-              <Item
-                key={productId._id}
-                onClick={() => handleNavigate(productId._id)}
-              >
+              <Item key={productId._id}>
                 <ImgBox>
                   <img src={productId.photo} alt={productId.name} />
                 </ImgBox>
@@ -80,7 +77,13 @@ const Cart = () => {
                     <AmountBox>
                       <button
                         type="button"
-                        onClick={() => handleIncrease(productId._id)}
+                        onClick={() =>
+                          handleAmountChange(
+                            productId._id,
+                            "increase",
+                            quantity
+                          )
+                        }
                       >
                         <svg>
                           <use href="/symbol-defs.svg#icon-plus" />
@@ -89,7 +92,13 @@ const Cart = () => {
                       <p>{quantity}</p>
                       <button
                         type="button"
-                        onClick={() => handleDecrease(productId._id)}
+                        onClick={() =>
+                          handleAmountChange(
+                            productId._id,
+                            "decrease",
+                            quantity
+                          )
+                        }
                       >
                         <svg>
                           <use href="/symbol-defs.svg#icon-min-gr" />

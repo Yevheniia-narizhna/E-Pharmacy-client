@@ -30,7 +30,7 @@ const Stores = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    console.log("Stores from redux:", nearestSt);
+    // console.log("Stores from redux:", nearestSt);
     if (nearestSt.length > 0) {
       const shuffled = [...nearestSt].sort(() => 0.5 - Math.random());
       setRandomStores(shuffled.slice(0, 6));

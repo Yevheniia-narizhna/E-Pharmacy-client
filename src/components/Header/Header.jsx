@@ -19,6 +19,7 @@ import { useWindowSize } from "../../utils/utils";
 import CartUser from "./CartUser/CartUser";
 import { useState } from "react";
 import BurgerMenu from "./BurgerMenu/BurgerMenu";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const location = useLocation();
@@ -30,6 +31,7 @@ const Header = () => {
   const isMobTab = windowWidth <= 1439;
   const isDesktop = windowWidth >= 1440;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
   const handleOpenMenu = () => {
     setIsMenuOpen(true);
@@ -72,7 +74,7 @@ const Header = () => {
           </>
         )}
         <WrappLeftBtn>
-          {!isHome && <CartUser />}
+          {!isHome && isLoggedIn && <CartUser />}
           {isDesktop ? (
             <LinksAuth />
           ) : (

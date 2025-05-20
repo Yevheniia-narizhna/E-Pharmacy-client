@@ -7,14 +7,15 @@ export const pharmApi = axios.create({
   headers: {
     "Content-Type": "application/json",
   },
+  withCredentials: true,
 });
 
 export const setToken = (token) => {
   pharmApi.defaults.headers.common.Authorization = `Bearer ${token}`;
-  console.log(
-    "Authorization header set:",
-    pharmApi.defaults.headers.common.Authorization
-  );
+  // console.log(
+  //   "Authorization header set:",
+  //   pharmApi.defaults.headers.common.Authorization
+  // );
 };
 
 export const clearToken = () => {

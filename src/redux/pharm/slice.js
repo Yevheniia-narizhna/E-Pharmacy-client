@@ -43,6 +43,9 @@ export const slice = createSlice({
     setCurrentPage: (state, { payload }) => {
       state.currentPage = payload;
     },
+    clearCart(state) {
+      state.cart = [];
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -109,5 +112,5 @@ export const slice = createSlice({
   },
 });
 
-export const { setCurrentPage } = slice.actions;
+export const { setCurrentPage, clearCart } = slice.actions;
 export const pharmReducer = slice.reducer;

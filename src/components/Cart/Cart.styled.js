@@ -81,10 +81,18 @@ export const ImgBox = styled.div`
   border-radius: 27px;
   border: 1.155px solid ${({ theme }) => theme.colors.subWhite};
   overflow: hidden;
+  & img {
+    width: 120px;
+    height: 120px;
+  }
 
-  @media only screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     width: 122px;
     height: 133px;
+    & img {
+      width: 122px;
+      height: 133px;
+    }
   }
 `;
 
@@ -98,7 +106,7 @@ export const MainTextWrap = styled.div`
   gap: 12px;
   margin-bottom: 18px;
 
-  @media only screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: 38px;
@@ -112,7 +120,7 @@ export const Subtitle = styled.h3`
   line-height: 1.4em;
   margin-bottom: 8px;
 
-  @media only screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     font-size: 18px;
   }
 `;
@@ -123,7 +131,7 @@ export const Text = styled.p`
   font-weight: 400;
   line-height: 1.17em;
 
-  @media only screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     font-size: 14px;
     line-height: 1.28em;
   }
@@ -135,7 +143,7 @@ export const Price = styled.p`
   font-weight: 500;
   line-height: 1.17em;
 
-  @media only screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     font-size: 14px;
     line-height: 1.28em;
   }
@@ -146,7 +154,7 @@ export const BtnBox = styled.div`
   align-items: center;
   gap: 19px;
 
-  @media only screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     justify-content: space-between;
   }
 `;
@@ -179,7 +187,7 @@ export const AmountBox = styled.div`
     line-height: 1.43em;
   }
 
-  @media only screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     padding: 12px 18px;
     width: 108px;
 

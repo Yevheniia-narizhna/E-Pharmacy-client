@@ -135,6 +135,7 @@ export const RadioBox = styled.div`
     line-height: 1.28em;
     display: flex;
     gap: 9px;
+    align-items: center;
   }
 
   & span {

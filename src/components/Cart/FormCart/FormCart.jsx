@@ -17,6 +17,7 @@ import {
   Text,
   TotalBox,
 } from "./FormCart.styled";
+import { clearCart } from "../../../redux/pharm/slice";
 
 const CartForm = () => {
   const dispatch = useDispatch();
@@ -46,6 +47,16 @@ const CartForm = () => {
     setValue("payment", isCashPayment ? "cash" : "bank");
   }, [isCashPayment, setValue]);
 
+  // const onSubmit = (data) => {
+  //   if (!cart?.cartProducts?.length) {
+  //     toast.error("Please select product to make an order");
+  //     return;
+  //   }
+  //   dispatch(cartCheckout(data))
+  //     .unwrap()
+  //     .then(() => navigate("/home"));
+  // };
+
   const onSubmit = (data) => {
     if (!cart?.cartProducts?.length) {
       toast.error("Please select product to make an order");
@@ -53,7 +64,14 @@ const CartForm = () => {
     }
     dispatch(cartCheckout(data))
       .unwrap()
-      .then(() => navigate("/home"));
+      .then(() => {
+        // toast.success("Order placed successfully!");
+        dispatch(clearCart());
+        navigate("/home");
+      })
+      .catch(() => {
+        toast.error("Failed to place order. Please try again.");
+      });
   };
 
   return (
