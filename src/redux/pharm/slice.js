@@ -72,32 +72,29 @@ export const slice = createSlice({
         state.isLoading = false;
         state.product = payload;
       })
-      .addCase(addToCart.fulfilled, (state, { payload }) => {
-        const existingIndex = state.cart.findIndex(
-          (item) => item.productId._id === payload.productId._id
-        );
+      // .addCase(addToCart.fulfilled, (state, { payload }) => {
+      //   const existingIndex = state.cart.findIndex(
+      //     (item) => item.productId._id === payload.productId._id
+      //   );
 
-        if (existingIndex !== -1) {
-          state.cart[existingIndex] = payload;
-        } else {
-          state.cart.push(payload);
-        }
+      //   if (existingIndex !== -1) {
+      //     state.cart[existingIndex] = payload;
+      //   } else {
+      //     state.cart.push(payload);
+      //   }
 
-        state.isLoading = false;
-      })
+      //   state.isLoading = false;
+      // })
 
-      // ✅ ОНОВЛЕННЯ КІЛЬКОСТІ
       .addCase(updateCart.fulfilled, (state) => {
         state.isLoading = false;
       })
 
-      // ✅ ОТРИМАННЯ ВСЬОГО КОШИКА
       .addCase(getCartItems.fulfilled, (state, action) => {
         state.isLoading = false;
         state.cart = action.payload.cartProducts;
       })
 
-      // ✅ ВИДАЛЕННЯ З КОШИКА
       .addCase(deleteFromCart.fulfilled, (state, action) => {
         const deletedId = action.meta.arg.productId;
         state.cart = state.cart.filter(
@@ -107,10 +104,9 @@ export const slice = createSlice({
       })
       .addCase(cartCheckout.fulfilled, (state) => {
         state.isLoading = false;
-        state.cart = []; // очищення тут
+        state.cart = [];
       })
 
-      // 🔄 ЗАГАЛЬНИЙ LOADING
       .addMatcher(
         (action) =>
           [
@@ -131,7 +127,6 @@ export const slice = createSlice({
         }
       )
 
-      // ❌ ПОМИЛКИ
       .addMatcher(
         (action) =>
           [

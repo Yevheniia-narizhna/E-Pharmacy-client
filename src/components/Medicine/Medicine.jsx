@@ -39,18 +39,6 @@ const Medicine = () => {
   const handleOpenModal = (type) => setModal(type);
   const handleCloseModal = () => setModal(null);
 
-  // const handleAddToCart = useCallback(
-  //   (id) => {
-  //     if (!isLoggedIn) {
-  //       handleOpenModal("signin");
-  //     } else {
-  //       dispatch(addToCart({ productId: id, quantity: 1 }));
-  //       dispatch(getCartItems());
-  //     }
-  //   },
-  //   [isLoggedIn, dispatch]
-  // );
-
   const handleAddToCart = useCallback(
     async (id) => {
       if (!isLoggedIn) {
@@ -60,7 +48,7 @@ const Medicine = () => {
 
       try {
         await dispatch(addToCart({ productId: id, quantity: 1 })).unwrap();
-        dispatch(getCartItems());
+        await dispatch(getCartItems()).unwrap();
         // toast.success("Product added to cart");
       } catch (err) {
         toast.error(err);
@@ -89,7 +77,14 @@ const Medicine = () => {
             {products.map((product) => (
               <Item key={product._id}>
                 <ImgBox>
-                  <img src={product.photo} alt="product" />
+                  <img
+                    src={product.photo}
+                    alt={product.name}
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = "/img/bann-mob-1x.png";
+                    }}
+                  />
                 </ImgBox>
                 <Info>
                   <NamePrice>
