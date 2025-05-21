@@ -36,7 +36,23 @@ const Product = () => {
     });
   };
 
-  const handleAddToCart = (id) => {
+  // const handleAddToCart = (id) => {
+  //   if (!isLoggedIn) {
+  //     setOpenSignIn(true);
+  //     return;
+  //   }
+
+  //   if (amount === 0) {
+  //     toast.info("Please select the quantity of the product");
+  //     return;
+  //   }
+  //   // console.log("amount:", amount, typeof amount);
+
+  //   dispatch(addToCart({ productId: id, quantity: amount }));
+  //   dispatch(getCartItems());
+  // };
+
+  const handleAddToCart = async (id) => {
     if (!isLoggedIn) {
       setOpenSignIn(true);
       return;
@@ -46,10 +62,14 @@ const Product = () => {
       toast.info("Please select the quantity of the product");
       return;
     }
-    console.log("amount:", amount, typeof amount);
 
-    dispatch(addToCart({ productId: id, quantity: amount }));
-    dispatch(getCartItems());
+    try {
+      await dispatch(addToCart({ productId: id, quantity: amount })).unwrap();
+      dispatch(getCartItems());
+      // toast.success("Product added to cart");
+    } catch (error) {
+      toast.error(error);
+    }
   };
 
   return (

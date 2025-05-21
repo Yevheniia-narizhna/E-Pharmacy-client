@@ -27,6 +27,32 @@ const Cart = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.pharm.cart);
 
+  // const handleAmountChange = async (productId, type, currentQuantity) => {
+  //   const newAmount =
+  //     type === "increase"
+  //       ? currentQuantity + 1
+  //       : Math.max(currentQuantity - 1, 0);
+
+  //   if (newAmount === 0) {
+  //     await dispatch(deleteFromCart({ productId }));
+  //   } else {
+  //     const updatedProducts = cart.cartProducts.map((item) =>
+  //       item.productId._id === productId
+  //         ? { productId, quantity: newAmount }
+  //         : { productId: item.productId._id, quantity: item.quantity }
+  //     );
+
+  //     await dispatch(updateCart({ products: updatedProducts }));
+  //   }
+
+  //   dispatch(getCartItems());
+  // };
+
+  // const handleDelete = (id) => {
+  //   dispatch(deleteFromCart(id));
+  //   dispatch(getCartItems());
+  // };
+
   const handleAmountChange = async (productId, type, currentQuantity) => {
     const newAmount =
       type === "increase"
@@ -34,23 +60,21 @@ const Cart = () => {
         : Math.max(currentQuantity - 1, 0);
 
     if (newAmount === 0) {
-      await dispatch(deleteFromCart({ productId }));
+      await dispatch(deleteFromCart({ productId })).unwrap();
     } else {
-      const updatedProducts = cart.cartProducts.map((item) =>
+      const updatedProducts = cart.map((item) =>
         item.productId._id === productId
           ? { productId, quantity: newAmount }
           : { productId: item.productId._id, quantity: item.quantity }
       );
-
-      await dispatch(updateCart({ products: updatedProducts }));
+      await dispatch(updateCart({ products: updatedProducts })).unwrap();
     }
 
-    dispatch(getCartItems());
+    await dispatch(getCartItems());
   };
 
-  const handleDelete = (id) => {
-    dispatch(deleteFromCart(id));
-    dispatch(getCartItems());
+  const handleDelete = async (id) => {
+    await dispatch(deleteFromCart({ productId: id })).unwrap();
   };
 
   return (
@@ -60,7 +84,7 @@ const Cart = () => {
         <CartForm />
         <div>
           <List>
-            {cart?.cartProducts?.map(({ productId, quantity }) => (
+            {cart?.map(({ productId, quantity }) => (
               <Item key={productId._id}>
                 <ImgBox>
                   <img src={productId.photo} alt={productId.name} />

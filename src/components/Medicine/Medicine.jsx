@@ -26,6 +26,7 @@ import Pagination from "./Pagination/Pagination";
 import Modal from "../Modal/Modal";
 import SignIn from "../Modal/SignIn/Signin";
 import SignUp from "../Modal/SignUp/SignUp";
+import { toast } from "react-toastify";
 
 const Medicine = () => {
   const dispatch = useDispatch();
@@ -38,13 +39,31 @@ const Medicine = () => {
   const handleOpenModal = (type) => setModal(type);
   const handleCloseModal = () => setModal(null);
 
+  // const handleAddToCart = useCallback(
+  //   (id) => {
+  //     if (!isLoggedIn) {
+  //       handleOpenModal("signin");
+  //     } else {
+  //       dispatch(addToCart({ productId: id, quantity: 1 }));
+  //       dispatch(getCartItems());
+  //     }
+  //   },
+  //   [isLoggedIn, dispatch]
+  // );
+
   const handleAddToCart = useCallback(
-    (id) => {
+    async (id) => {
       if (!isLoggedIn) {
         handleOpenModal("signin");
-      } else {
-        dispatch(addToCart({ productId: id, quantity: 1 }));
+        return;
+      }
+
+      try {
+        await dispatch(addToCart({ productId: id, quantity: 1 })).unwrap();
         dispatch(getCartItems());
+        // toast.success("Product added to cart");
+      } catch (err) {
+        toast.error(err);
       }
     },
     [isLoggedIn, dispatch]

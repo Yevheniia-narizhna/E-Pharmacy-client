@@ -142,10 +142,10 @@ export const decreaseQuantity = createAsyncThunk(
 
 export const deleteFromCart = createAsyncThunk(
   "cart/deleteItem",
-  async (id, { rejectWithValue, getState }) => {
+  async ({ productId }, { rejectWithValue, getState }) => {
     try {
       withAuthToken(getState);
-      const response = await pharmApi.delete(`/cart/remove/${id}`);
+      const response = await pharmApi.delete(`/cart/remove/${productId}`);
       toast.success("Product removed from cart.");
       return response.data;
     } catch (error) {

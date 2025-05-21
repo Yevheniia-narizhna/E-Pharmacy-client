@@ -23,7 +23,11 @@ const CartForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const cart = useSelector((state) => state.pharm.cart);
-  const total = Number(cart?.total || 0).toFixed(2);
+  const total = cart
+    ?.reduce((sum, item) => {
+      return sum + item.quantity * item.productId.price;
+    }, 0)
+    .toFixed(2);
   const [isCashPayment, setIsCashPayment] = useState(true);
 
   const {
@@ -47,18 +51,8 @@ const CartForm = () => {
     setValue("payment", isCashPayment ? "cash" : "bank");
   }, [isCashPayment, setValue]);
 
-  // const onSubmit = (data) => {
-  //   if (!cart?.cartProducts?.length) {
-  //     toast.error("Please select product to make an order");
-  //     return;
-  //   }
-  //   dispatch(cartCheckout(data))
-  //     .unwrap()
-  //     .then(() => navigate("/home"));
-  // };
-
   const onSubmit = (data) => {
-    if (!cart?.cartProducts?.length) {
+    if (!cart?.length) {
       toast.error("Please select product to make an order");
       return;
     }
@@ -66,8 +60,8 @@ const CartForm = () => {
       .unwrap()
       .then(() => {
         // toast.success("Order placed successfully!");
-        dispatch(clearCart());
         navigate("/home");
+        dispatch(clearCart());
       })
       .catch(() => {
         toast.error("Failed to place order. Please try again.");

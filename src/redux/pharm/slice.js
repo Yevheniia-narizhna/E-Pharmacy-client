@@ -4,7 +4,7 @@ import {
   allStores,
   cartCheckout,
   customerReviews,
-  decreaseQuantity,
+  // decreaseQuantity,
   deleteFromCart,
   getCartItems,
   getProductById,
@@ -27,14 +27,14 @@ const initialState = {
   error: null,
 };
 
-const cartActions = [
-  getCartItems,
-  updateCart,
-  cartCheckout,
-  deleteFromCart,
-  addToCart,
-  decreaseQuantity,
-];
+// const cartActions = [
+//   getCartItems,
+//   updateCart,
+//   cartCheckout,
+//   deleteFromCart,
+//   addToCart,
+//   decreaseQuantity,
+// ];
 
 export const slice = createSlice({
   name: "pharm",
@@ -72,13 +72,45 @@ export const slice = createSlice({
         state.isLoading = false;
         state.product = payload;
       })
-      .addMatcher(
-        (action) => cartActions.some((thunk) => thunk.fulfilled.match(action)),
-        (state, { payload }) => {
-          state.isLoading = false;
-          state.cart = payload;
+      .addCase(addToCart.fulfilled, (state, { payload }) => {
+        const existingIndex = state.cart.findIndex(
+          (item) => item.productId._id === payload.productId._id
+        );
+
+        if (existingIndex !== -1) {
+          state.cart[existingIndex] = payload;
+        } else {
+          state.cart.push(payload);
         }
-      )
+
+        state.isLoading = false;
+      })
+
+      // ✅ ОНОВЛЕННЯ КІЛЬКОСТІ
+      .addCase(updateCart.fulfilled, (state) => {
+        state.isLoading = false;
+      })
+
+      // ✅ ОТРИМАННЯ ВСЬОГО КОШИКА
+      .addCase(getCartItems.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.cart = action.payload.cartProducts;
+      })
+
+      // ✅ ВИДАЛЕННЯ З КОШИКА
+      .addCase(deleteFromCart.fulfilled, (state, action) => {
+        const deletedId = action.meta.arg.productId;
+        state.cart = state.cart.filter(
+          (item) => item.productId._id !== deletedId
+        );
+        state.isLoading = false;
+      })
+      .addCase(cartCheckout.fulfilled, (state) => {
+        state.isLoading = false;
+        state.cart = []; // очищення тут
+      })
+
+      // 🔄 ЗАГАЛЬНИЙ LOADING
       .addMatcher(
         (action) =>
           [
@@ -87,13 +119,19 @@ export const slice = createSlice({
             allStores,
             searchProducts,
             getProductById,
-            ...cartActions,
+            getCartItems,
+            updateCart,
+            cartCheckout,
+            deleteFromCart,
+            addToCart,
           ].some((thunk) => thunk.pending.match(action)),
         (state) => {
           state.isLoading = true;
           state.error = null;
         }
       )
+
+      // ❌ ПОМИЛКИ
       .addMatcher(
         (action) =>
           [
@@ -102,7 +140,11 @@ export const slice = createSlice({
             allStores,
             searchProducts,
             getProductById,
-            ...cartActions,
+            getCartItems,
+            updateCart,
+            cartCheckout,
+            deleteFromCart,
+            addToCart,
           ].some((thunk) => thunk.rejected.match(action)),
         (state, { payload }) => {
           state.isLoading = false;

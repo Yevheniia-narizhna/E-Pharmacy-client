@@ -12,7 +12,7 @@ const CartUser = () => {
   const cart = useSelector((state) => state.pharm.cart);
   const location = useLocation();
   const pageType = location.pathname.split("/")[1];
-  const cartItemsQuantity = cart?.cartProducts?.reduce(
+  const cartItemsQuantity = cart?.reduce(
     (total, item) => total + (item.quantity || 0),
     0
   );
